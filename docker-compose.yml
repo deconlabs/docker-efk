@@ -17,14 +17,19 @@ services:
       ELASTIC_PASSWORD: changeme
     networks:
       - elk
-  fleuntd:
+  fluentd:
     build:
       context: fluentd/
     volumes:
-      - ./fluentd/fluentd.conf:/fluentd/etc/fluent.conf
+      - ./fluentd/fluentd.conf:/fluentd/etc/fluentd.conf
+      - ./data:/fluentd/data
+    ports:
+      - 8888:8888
     networks:
       - elk
     depends_on:
+      - elasticsearch
+    links:
       - elasticsearch
   kibana:
     build:
