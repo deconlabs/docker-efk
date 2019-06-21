@@ -1,7 +1,6 @@
-version: '2'
+version: "3"
 
 services:
-
   elasticsearch:
     build:
       context: elasticsearch/
@@ -21,8 +20,8 @@ services:
     build:
       context: fluentd/
     volumes:
-      - ./fluentd/fluentd.conf:/fluentd/etc/fluentd.conf
-      - ./data:/fluentd/data
+      - ./fluentd/fluent.conf:/fluentd/etc/fluent.conf
+      - ./data/MTGOXUSD.csv:/fluentd/data/MTGOXUSD.csv
     ports:
       - 8888:8888
     networks:
@@ -46,6 +45,5 @@ services:
       - elasticsearch
 
 networks:
-
   elk:
     driver: bridge
