@@ -21,7 +21,7 @@ services:
     build:
       context: fluentd/
     volumes:
-      - ./fluentd/fluentd.conf:/fluentd/etc/fluentd.conf
+      - ./fluentd/:/fluentd/etc/
       - ./data:/fluentd/data
     ports:
       - 8888:8888
@@ -29,8 +29,7 @@ services:
       - elk
     depends_on:
       - elasticsearch
-    links:
-      - elasticsearch
+    
   kibana:
     build:
       context: kibana/
