@@ -20,13 +20,8 @@ services:
     build:
       context: fluentd/
     volumes:
-<<<<<<< HEAD
       - ./fluentd/:/fluentd/etc/
       - ./data:/fluentd/data
-=======
-      - ./fluentd/fluent.conf:/fluentd/etc/fluent.conf
-      - ./data/MTGOXUSD.csv:/fluentd/data/MTGOXUSD.csv
->>>>>>> ac10470f309b710e92ecbc56bc460a6f65d8eec4
     ports:
       - 8888:8888
     networks:
